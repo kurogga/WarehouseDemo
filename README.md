@@ -41,19 +41,19 @@ The application is made with Spring Boot with a embed Tomcat server and H2 memor
 ### Build and Test API
 Use the Maven wrapper included by Spring Initializr, *mvnw*.
 1. To run the application with:
-```
-mvnw compile
-```
+    ```
+    mvnw compile
+    ```
 2. To build the application with:
-```
-mvnw package
-```
-Then to execute the JAR file with:
-```
-java -jar target/WarehouseDemo-0.0.1-SNAPSHOT.jar
-```
+    ```
+    mvnw package
+    ```
+    Then to execute the JAR file with:
+    ```
+    java -jar target/WarehouseDemo-0.0.1-SNAPSHOT.jar
+    ```
 3. In order to test the REST API, it is recommended to use the [Swagger UI](localhost:8081/swagger-ui.html). The used server port is 8081, if it is blocked, then run the JAR with the following line:
-```
-java -jar -Dserver.port=XXXX target/WarehouseDemo-0.0.1-SNAPSHOT.jar
-```
-and replace *XXXX* with a currently not used port. 
+    ```
+    java -jar -Dserver.port=XXXX target/WarehouseDemo-0.0.1-SNAPSHOT.jar
+    ```
+    and replace *XXXX* with a currently not used port. 
