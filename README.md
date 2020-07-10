@@ -39,8 +39,8 @@ The application is made with Spring Boot with a embed Tomcat server and H2 memor
 - A web browser.
 
 ### Build and Test API
-Use the Maven wrapper included by Spring Initializr, *mvnw*.
-1. To run the application with:
+*Optional: Skip to 3. to use the provide JAR file.*
+1. To run the application with the Maven wrapper included by Spring Initializr, *mvnw*:
     ```
     mvnw compile
     ```
