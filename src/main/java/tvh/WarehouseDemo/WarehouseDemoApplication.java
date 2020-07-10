@@ -1,5 +1,7 @@
 package tvh.WarehouseDemo;
 
+import java.util.Random;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -37,24 +39,28 @@ public class WarehouseDemoApplication {
 
 			log.info("-------------------------------");
 			// add stock to a two warehouses
-			Warehouse w1 = repository.findByWarehouseId((long) 1);
-			Warehouse w2 = repository.findByWarehouseId((long) 2);
-			w1.addStock("A", 5);
-			w1.addStock("B", 50);
-			w1.addStock("C", 2);
-			w1.addStock("D", 9);
-			w2.addStock("A", 4);
-			w2.addStock("B", 30);
-			w2.addStock("C", 20);
-			w2.addStock("D", 11);
-			repository.save(w1);
-			repository.save(w2);
-			log.info("Added stock to warehouses:");
-			log.info(w1.toString());
-			log.info(w2.toString());
+			log.info("Add stock to warehouses:");
+			Random rand = new Random();
+			int stocks = rand.nextInt(10) + 1;
+			for (int i = 1; i < amountOfWarehouses + 1; i++) {
+				Warehouse warehouse = repository.findByWarehouseId((long) i);
+				warehouse.addStock("A", stocks);
+				stocks = rand.nextInt(10) + 1;
+				warehouse.addStock("B", stocks);
+				stocks = rand.nextInt(10) + 1;
+				warehouse.addStock("C", stocks);
+				stocks = rand.nextInt(10) + 1;
+				warehouse.addStock("D", stocks);
+				stocks = rand.nextInt(10) + 1;
+				repository.save(warehouse);
+			}
+			for (Warehouse result : repository.findAll())
+				log.info(result.toString());
 
 			log.info("-------------------------------");
 			// move stocks between both warehouses
+			Warehouse w1 = repository.findByWarehouseId((long) 1);
+			Warehouse w2 = repository.findByWarehouseId((long) 2);
 			boolean r1 = w1.moveStockTo(w2, "A", 5);
 			boolean r2 = w2.moveStockTo(w1, "D", 1);
 			log.info("Moved stock: " + r1 + r2);
